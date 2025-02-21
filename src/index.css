@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-*: initial;
+  /* Primary Colors */
+  --color-green-water: #00adb5; /* Verde-água principal */
+  --color-light-green-water: #aae3e2; /* Verde-água claro */
+  --color-soft-white: #fdf6fd; /* Branco com tom suave */
+
+  /* Accent Colors */
+  --color-vibrant-purple: #ac7dd2; /* Roxo vibrante */
+  --color-soft-pink: #fff4ff; /* Branco com tom rosado para detalhes */
+
+  /* Hover Color */
+  --color-green-water-hover: #00c897; /* Verde-água para hover */
+
+  /* Text Colors */
+  --color-light-gray: #eeeeee; /* Cinza claro para texto principal */
+  --color-medium-gray: #c5c5c5; /* Cinza médio para texto secundário */
+
+  /* Background Colors */
+  --color-dark-blue: #222831; /* Preto azulado para fundo escuro */
+  --color-medium-dark-blue: #393e46; /* Cinza azulado para fundo médio */
+  --color-dark-gray: #454e59; /* Cinza escuro para fundo claro */
+}
+
