@@ -8,7 +8,7 @@ interface CardProdutosProps {
 
 function CardProdutos({ produto }: CardProdutosProps) {
   return (
-    <div className="border flex flex-col rounded-2xl overflow-hidden justify-between shadow-lg hover:shadow-xl transition-shadow bg-[var(--color-soft-white)]">
+    <div className="flex flex-col rounded-2xl overflow-hidden justify-between shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out bg-[var(--color-soft-white)] w-full max-w-xs mx-auto transform hover:-translate-y-1">
       <div className="flex justify-end p-2">
         <Link
           to={`/editarproduto/${produto.id}`}
@@ -19,7 +19,7 @@ function CardProdutos({ produto }: CardProdutosProps) {
         </Link>
         <Link
           to={`/deletarproduto/${produto.id}`}
-          className="text-[var(--color-soft-white)] bg-[var(--color-vibrant-purple)] hover:bg-[#b992df]
+          className="text-[var(--color-soft-white)] bg-[var(--color-vibrant-purple)] hover:bg-purple-hover
                       flex items-center justify-center p-2 rounded-full transition duration-300 ease-in-out"
         >
           <Trash size={20} />
@@ -29,23 +29,21 @@ function CardProdutos({ produto }: CardProdutosProps) {
       <div className="flex flex-col items-center p-4">
         <img
           src={produto?.foto}
-          className="h-full w-40 object-cover mb-4"
+          className="h-48 w-48 object-cover mb-4 rounded-lg"
           alt={produto?.nome}
         />
-        <p className="text-2xl font-bold text-[var(--color-medium-dark-blue)] mb-2">
+        <p className="text-xl font-bold text-[var(--color-dark-blue)] mb-2 text-center">
           {produto.nome}
         </p>
-        <p className="text-xl text-dark-gray mb-2">
+        <p className="text-lg text-dark-gray mb-2">
           R${produto.preco}
         </p>
-        <p className="text-lg text-dark-gray mb-4">
-          {produto.categoria?.tipo}
-        </p>
+        <p className="font-semibold">Categoria:</p> {produto.categoria?.tipo}
       </div>
 
       <Link
         to={`/comprarProduto/${produto.id}`}
-        className="text-[var(--color-soft-white)] bg-[var(--color-vibrant-purple)] hover:bg-[#b992df] w-full
+        className="text-[var(--color-soft-white)] bg-[var(--color-green-water)] hover:bg-[var(--color-green-water-hover)] w-full
                     flex items-center justify-center py-3 transition duration-300 ease-in-out"
       >
         <button>Comprar</button>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-*: initial;
+
   /* Primary Colors */
   --color-green-water: #00adb5; /* Verde-água principal */
   --color-light-green-water: #aae3e2; /* Verde-água claro */
@@ -12,8 +12,8 @@
   --color-soft-pink: #fff4ff; /* Branco com tom rosado para detalhes */
 
   /* Hover Color */
-  --color-green-water-hover: #00c897; /* Verde-água para hover */
-
+  --color-green-water-hover: #33C2C8; /* Verde-água para hover */
+  --color-purple-hover: #C49BE3;
   /* Text Colors */
   --color-light-gray: #eeeeee; /* Cinza claro para texto principal */
   --color-medium-gray: #c5c5c5; /* Cinza médio para texto secundário */

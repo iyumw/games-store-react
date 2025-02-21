@@ -3,6 +3,7 @@ import Cardcategorias from "../cardcategorias/CardCategorias";
 import { DNA } from "react-loader-spinner";
 import { buscar } from "../../../services/Service";
 import Categoria from "../../../models/Categoria";
+import { BeatLoader } from "react-spinners";
 
 function ListaCategorias() {
   // Estado para armazenar as categorias
@@ -26,18 +27,13 @@ function ListaCategorias() {
     <>
       {/* Exibe o loader enquanto as categorias estão sendo carregadas */}
       {categorias.length === 0 && (
-        <DNA
-          visible={true}
-          height="200"
-          width="200"
-          ariaLabel="dna-loading"
-          wrapperStyle={{}}
-          wrapperClass="dna-wrapper mx-auto"
-        />
+          <div className="flex justify-center items-center h-screen">
+            <BeatLoader color="var(--color-green-water)" />
+          </div>
       )}
       <div className="flex justify-center w-full my-4">
         <div className="container flex flex-col">
-          <h1 className="text-4xl font-medium text-center my-8 text-[var(--color-vibrant-purple)]">
+          <h1 className="text-4xl font-medium text-center my-8 text-dark-blue">
             Lista de Categorias
           </h1>
           <div

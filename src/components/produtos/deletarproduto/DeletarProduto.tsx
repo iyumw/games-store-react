@@ -58,9 +58,9 @@ function DeletarProduto() {
 
   if (!produto.nome) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen bg-[var(--color-medium-dark-blue)]">
         <RotatingLines
-          strokeColor="var(--color-vibrant-purple)"
+          strokeColor="var(--color-green-water)"
           strokeWidth="5"
           animationDuration="0.75"
           width="50"
@@ -71,55 +71,57 @@ function DeletarProduto() {
   }
 
   return (
-    <div className="container w-full max-w-2xl mx-auto p-6 bg-[var(--color-soft-white)] rounded-lg shadow-lg flex flex-col items-center">
-      <h1 className="text-4xl text-center my-6 text-[var(--color-dark-blue)] font-bold">
-        Deletar Produto
-      </h1>
+    <div className="flex justify-center items-center min-h-screen bg-[var(--color-medium-dark-blue)] p-4">
+      <div className="container w-full max-w-2xl mx-auto p-6 bg-[var(--color-dark-blue)] rounded-lg shadow-lg flex flex-col items-center">
+        <h1 className="text-4xl text-center my-6 text-[var(--color-soft-white)] font-bold">
+          Deletar Produto
+        </h1>
 
-      <p className="text-center text-dark-gray mb-6">
-        Você tem certeza de que deseja apagar o produto a seguir?
-      </p>
+        <p className="text-center text-[var(--color-light-gray)] mb-6">
+          Você tem certeza de que deseja apagar o produto a seguir?
+        </p>
 
-      <div className="border border-[var(--color-light-green-water)] rounded-lg overflow-hidden bg-[var(--color-soft-pink)] w-full">
-        <header className="py-3 px-6 bg-[var(--color-light-green-water)] text-[var(--color-dark-blue)] font-bold text-2xl text-center">
-          {produto.nome}
-        </header>
-        <div className="p-6 flex flex-col items-center">
-          <img
-            src={produto.foto}
-            alt={produto.nome}
-            className="w-25 h-full object-cover mb-4 rounded-lg"
-          />
-          <p className="text-dark-gray">
-            <span className="font-semibold">Preço:</span> R$ {produto.preco}
-          </p>
-          <p className="text-dark-gray">
-            <span className="font-semibold">Categoria:</span> {produto.categoria?.tipo}
-          </p>
-        </div>
-        <div className="flex">
-          <button
-            className="flex-1 bg-[var(--color-light-green-water)] hover:bg-[var(--color-green-water-hover)] text-[var(--color-dark-blue)] font-bold py-3 transition-colors"
-            onClick={retornar}
-          >
-            Não, voltar
-          </button>
-          <button
-            className="flex-1 bg-[var(--color-vibrant-purple)] hover:bg-[var(--color-green-water-hover)] text-[var(--color-soft-white)] font-bold py-3 flex items-center justify-center transition-colors"
-            onClick={deletarProduto}
-          >
-            {isLoading ? (
-              <RotatingLines
-                strokeColor="white"
-                strokeWidth="5"
-                animationDuration="0.75"
-                width="24"
-                visible={true}
-              />
-            ) : (
-              <span>Sim, deletar</span>
-            )}
-          </button>
+        <div className="border border-[var(--color-green-water)] rounded-lg overflow-hidden bg-[var(--color-dark-blue)] w-full">
+          <header className="py-3 px-6 bg-[var(--color-green-water)] text-[var(--color-dark-blue)] font-bold text-2xl text-center">
+            {produto.nome}
+          </header>
+          <div className="p-6 flex flex-col items-center">
+            <img
+              src={produto.foto}
+              alt={produto.nome}
+              className="w-48 h-48 object-cover mb-4 rounded-lg"
+            />
+            <p className="text-[var(--color-light-gray)]">
+              <span className="font-semibold">Preço:</span> R$ {produto.preco}
+            </p>
+            <p className="text-[var(--color-light-gray)]">
+              <span className="font-semibold">Categoria:</span> {produto.categoria?.tipo}
+            </p>
+          </div>
+          <div className="flex">
+            <button
+              className="flex-1 bg-[var(--color-green-water)] hover:bg-[var(--color-green-water-hover)] text-[var(--color-dark-blue)] font-bold py-3 transition-colors"
+              onClick={retornar}
+            >
+              Não, voltar
+            </button>
+            <button
+              className="flex-1 bg-[var(--color-vibrant-purple)] hover:bg-purple-hover text-[var(--color-soft-white)] font-bold py-3 flex items-center justify-center transition-colors"
+              onClick={deletarProduto}
+            >
+              {isLoading ? (
+                <RotatingLines
+                  strokeColor="white"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  width="24"
+                  visible={true}
+                />
+              ) : (
+                <span>Sim, deletar</span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -70,44 +70,45 @@ function FormCategoria() {
   }, [id]);
 
   return (
-    <div className="w-full min-h-screen bg-[var(--color-dark-blue)] p-4">
-      {/* Título condicional */}
-      <h1 className="text-4xl text-center my-8 text-[var(--color-vibrant-purple)]">
-        {id !== undefined ? "Editar Categoria" : "Cadastrar Categoria"}
-      </h1>
-  
-      <form className="w-full md:w-1/2 flex flex-col gap-6 bg-[var(--color-medium-dark-blue)] p-8 rounded-lg shadow-lg mx-auto" onSubmit={gerarNovaCategoria}>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="tipo" className="text-[var(--color-light-gray)] font-semibold">
-            Descrição da Categoria
-          </label>
-          <input
-            type="text"
-            placeholder="Descreva aqui sua categoria"
-            name="tipo"
-            className="border-2 border-[var(--color-dark-blue)] rounded p-2 bg-[var(--color-dark-blue)] text-[var(--color-light-gray)] focus:outline-none focus:border-[var(--color-green-water)]"
-            value={categoria.tipo || ""}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-          />
-        </div>
-        <button
-          className="rounded text-[var(--color-soft-white)] bg-[var(--color-green-water)] 
-                                 hover:bg-[var(--color-green-water-hover)] w-full md:w-1/2 py-2 mx-auto flex justify-center items-center transition duration-300 ease-in-out"
-          type="submit"
-        >
-          {isLoading ? (
-            <RotatingLines
-              strokeColor="white"
-              strokeWidth="5"
-              animationDuration="0.75"
-              width="24"
-              visible={true}
+    <div className="flex justify-center items-center min-h-screen bg-[var(--color-medium-dark-blue)] p-4">
+      <div className="container flex flex-col mx-auto items-center bg-[var(--color-dark-blue)] p-8 rounded-lg shadow-lg max-w-2xl w-full">
+        <h1 className="text-4xl text-center my-8 text-[var(--color-soft-white)] font-bold">
+          {id !== undefined ? "Editar Categoria" : "Cadastrar Categoria"}
+        </h1>
+
+        <form className="flex flex-col w-full gap-6" onSubmit={gerarNovaCategoria}>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="tipo" className="text-[var(--color-soft-white)] font-semibold">
+              Descrição da Categoria
+            </label>
+            <input
+              type="text"
+              placeholder="Descreva aqui sua categoria"
+              name="tipo"
+              className="border-2 border-[var(--color-green-water)] rounded p-2 focus:outline-none focus:border-[var(--color-green-water-hover)] bg-[var(--color-medium-dark-blue)] text-[var(--color-soft-white)]"
+              value={categoria.tipo || ""}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
-          ) : (
-            <span>{id !== undefined ? "Atualizar" : "Cadastrar"}</span>
-          )}
-        </button>
-      </form>
+          </div>
+          <button
+            className="rounded disabled:bg-[var(--color-light-green-water)] bg-[var(--color-green-water)] hover:bg-[var(--color-green-water-hover)]
+                               text-[var(--color-dark-blue)] font-bold w-full py-3 flex justify-center transition-colors"
+            type="submit"
+          >
+            {isLoading ? (
+              <RotatingLines
+                strokeColor="white"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="24"
+                visible={true}
+              />
+            ) : (
+              <span>{id !== undefined ? "Atualizar" : "Cadastrar"}</span>
+            )}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
