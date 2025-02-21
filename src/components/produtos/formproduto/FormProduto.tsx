@@ -64,9 +64,19 @@ function FormProduto() {
   }, [categoria]);
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+    const { type, value, name } = e.target;
+    let valor: string | number = value;
+
+    if (
+      ["number", "range"].includes(type) ||
+      (!isNaN(Number(value)) && value !== "")
+    ) {
+      valor = parseFloat(Number(value).toFixed(2));
+    }
+
     setProduto({
       ...produto,
-      [e.target.name]: e.target.value,
+      [name]: valor,
       categoria: categoria,
     });
   }
@@ -116,9 +126,15 @@ function FormProduto() {
           {id !== undefined ? "Editar Produto" : "Cadastrar Produto"}
         </h1>
 
-        <form className="flex flex-col w-full gap-6" onSubmit={gerarNovoProduto}>
+        <form
+          className="flex flex-col w-full gap-6"
+          onSubmit={gerarNovoProduto}
+        >
           <div className="flex flex-col gap-2">
-            <label htmlFor="nome" className="text-[var(--color-soft-white)] font-semibold">
+            <label
+              htmlFor="nome"
+              className="text-[var(--color-soft-white)] font-semibold"
+            >
               Nome do Produto
             </label>
             <input
@@ -128,11 +144,16 @@ function FormProduto() {
               required
               className="border-2 border-[var(--color-green-water)] rounded p-2 focus:outline-none focus:border-[var(--color-green-water-hover)] bg-[var(--color-medium-dark-blue)] text-[var(--color-soft-white)]"
               value={produto.nome}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                atualizarEstado(e)
+              }
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="foto" className="text-[var(--color-soft-white)] font-semibold">
+            <label
+              htmlFor="foto"
+              className="text-[var(--color-soft-white)] font-semibold"
+            >
               Foto do Produto
             </label>
             <textarea
@@ -147,21 +168,29 @@ function FormProduto() {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="preco" className="text-[var(--color-soft-white)] font-semibold">
+            <label
+              htmlFor="preco"
+              className="text-[var(--color-soft-white)] font-semibold"
+            >
               Preço do Produto
             </label>
             <input
               type="number"
+              step=".01"
               placeholder="Preço"
               name="preco"
               required
               className="border-2 border-[var(--color-green-water)] rounded p-2 focus:outline-none focus:border-[var(--color-green-water-hover)] bg-[var(--color-medium-dark-blue)] text-[var(--color-soft-white)]"
               value={produto.preco}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                atualizarEstado(e)
+              }
             />
           </div>
           <div className="flex flex-col gap-2">
-            <p className="text-[var(--color-soft-white)] font-semibold">Categoria do Produto</p>
+            <p className="text-[var(--color-soft-white)] font-semibold">
+              Categoria do Produto
+            </p>
             <select
               name="categoria"
               id="categoria"
