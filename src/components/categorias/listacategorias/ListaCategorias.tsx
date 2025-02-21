@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Cardcategorias from "../cardcategorias/CardCategorias";
-import { DNA } from "react-loader-spinner";
 import { buscar } from "../../../services/Service";
 import Categoria from "../../../models/Categoria";
 import { BeatLoader } from "react-spinners";
@@ -9,7 +8,7 @@ function ListaCategorias() {
   // Estado para armazenar as categorias
   const [categorias, setCategorias] = useState<Categoria[]>([]);
 
-  // Função que carrega as categorias do backend
+  // Função para buscar categorias da API
   async function buscarCategorias() {
     try {
       await buscar("/categorias", setCategorias);
@@ -18,7 +17,7 @@ function ListaCategorias() {
     }
   }
 
-  // Chama a função para buscar as categorias quando o componente é montado
+  // Chama a função para busca ao montar o componente
   useEffect(() => {
     buscarCategorias();
   }, []);

@@ -14,6 +14,7 @@ function FormProduto() {
 
   const { id } = useParams<{ id: string }>();
 
+  // Busca um produto pelo ID caso esteja editando
   async function buscarProdutoPorId(id: string) {
     try {
       await buscar(`/produtos/${id}`, setProduto);
@@ -24,6 +25,7 @@ function FormProduto() {
     }
   }
 
+  // Busca uma categoria pelo ID
   async function buscarCategoriaPorId(id: string) {
     try {
       await buscar(`/categorias/${id}`, setCategoria);
@@ -34,6 +36,7 @@ function FormProduto() {
     }
   }
 
+  // Busca todas as categorias e as ordena alfabeticamente
   async function buscarCategorias() {
     try {
       await buscar("/categorias", setCategorias);
@@ -48,6 +51,7 @@ function FormProduto() {
     }
   }
 
+  // Busca todas as categorias e as ordena alfabeticamente
   useEffect(() => {
     buscarCategorias();
 
@@ -56,6 +60,7 @@ function FormProduto() {
     }
   }, [id]);
 
+  // Atualiza o produto sempre que a categoria mudar
   useEffect(() => {
     setProduto({
       ...produto,
@@ -63,6 +68,7 @@ function FormProduto() {
     });
   }, [categoria]);
 
+  // Atualiza os campos do produto conforme o usuário digita
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
     const { type, value, name } = e.target;
     let valor: string | number = value;
@@ -130,6 +136,7 @@ function FormProduto() {
           className="flex flex-col w-full gap-6"
           onSubmit={gerarNovoProduto}
         >
+          {/* Campos do formulário para nome, foto, preço e categoria */}
           <div className="flex flex-col gap-2">
             <label
               htmlFor="nome"
@@ -207,6 +214,7 @@ function FormProduto() {
               ))}
             </select>
           </div>
+          {/* Botão de envio, desabilitado enquanto a categoria não é carregada */}
           <button
             type="submit"
             className="rounded disabled:bg-[var(--color-light-green-water)] bg-[var(--color-green-water)] hover:bg-[var(--color-green-water-hover)]
