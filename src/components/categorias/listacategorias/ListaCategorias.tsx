@@ -3,6 +3,7 @@ import Cardcategorias from "../cardcategorias/CardCategorias";
 import { buscar } from "../../../services/Service";
 import Categoria from "../../../models/Categoria";
 import { BeatLoader } from "react-spinners";
+import CardCategorias from "../cardcategorias/CardCategorias";
 
 function ListaCategorias() {
   // Estado para armazenar as categorias
@@ -26,9 +27,9 @@ function ListaCategorias() {
     <>
       {/* Exibe o loader enquanto as categorias estão sendo carregadas */}
       {categorias.length === 0 && (
-          <div className="flex justify-center items-center h-screen">
-            <BeatLoader color="var(--color-green-water)" />
-          </div>
+        <div className="flex justify-center items-center h-screen">
+          <BeatLoader color="var(--color-green-water)" />
+        </div>
       )}
       <div className="flex justify-center w-full my-4">
         <div className="container flex flex-col">
@@ -39,9 +40,11 @@ function ListaCategorias() {
             className="grid grid-cols-1 md:grid-cols-2 
                                     lg:grid-cols-3 gap-8 px-2"
           >
-            {categorias.map((categoria: Categoria) => (
-              <Cardcategorias key={categoria.id} categoria={categoria} />
-            ))}
+            {categorias
+              .sort((a, b) => a.id - b.id)
+              .map((categoria: Categoria) => (
+                <CardCategorias key={categoria.id} categoria={categoria} />
+              ))}
           </div>
         </div>
       </div>
